@@ -1,17 +1,17 @@
-# # Ask user for their name
-# name = input("Enter your name: ") 
+# Ask user for their name
+name = input("Enter your name: ") 
 
-# # Ask for their age
-# age = int(input("Enter your age: "))
+# Ask for their age
+age = int(input("Enter your age: "))
 
-# # Ask the user for their test core
-# score = int(input("Enter your test score: "))
+# Ask the user for their test core
+score = int(input("Enter your test score: "))
 
-# # Check age eligibility
-# eligibility = (age < 18) and (score > 70)
+# Check age eligibility
+eligibility = (age < 18) and (score > 70)
 
-# # printing out the details using escape sequence
-# print(f"Candidate: {name}\nage: {age}\nScore: {score}\nEligible: {eligibility}")
+# printing out the details using escape sequence
+print(f"Candidate: {name}\nage: {age}\nScore: {score}\nEligible: {eligibility}")
 
 '''
 The code is taking input from user from asking their name, age and test score to check their eligibility.
