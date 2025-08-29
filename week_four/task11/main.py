@@ -12,7 +12,7 @@ participant_dict = {}
 
 
 
-def main():
+def participant_details():
     # load_participants()     
     # file_ops.load_participants      # Load participants if any any when app starts
     while True:
@@ -81,9 +81,14 @@ def main():
         else:
             print("\n<--- Next Participant --->\n")
             continue
-main()
-updating = participant_dict.update()
-print(participant_dict)   
+
+participant_details()
+
+# for participant in participant_details():
+
+
+
+   
 
 
 file_ops.save_participant(csv_file, participant_dict)
