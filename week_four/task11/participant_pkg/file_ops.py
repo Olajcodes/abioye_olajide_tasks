@@ -12,3 +12,5 @@ def save_participant(csv_file, participant_dict):
     participant_dict.append()
     
 def load_participants(path):
+    return load_participants
+
