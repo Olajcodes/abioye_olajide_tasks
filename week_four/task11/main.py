@@ -1,24 +1,22 @@
 
-# from file_ops import save_participant
-# from file_ops import load_participants
+from participant_pkg import file_ops
 
-# from participant_pkg import file_ops
+import csv
+from pathlib import Path
+file = Path.cwd()
+workspace = file/Path("task11/participant_pkg/workspace")
+workspace.mkdir(exist_ok= True)
+csv_file = workspace / "contacts.csv"
 
-# import csv
-# from pathlib import Path
+participant_dict = {}
 
-# workspace = Path("workspace")
-# workspace.mkdir(exist_ok= True)
-# csv_file = workspace / "contacts.csv"
 
-# participant_dict = {}
 
 def main():
     # load_participants()     
     # file_ops.load_participants      # Load participants if any any when app starts
-        
     while True:
-        # Collecting and Validating name input.
+                    # Collecting and Validating name input.
         while True:
             try:
                 name = input("Kindly enter your name: ")
@@ -27,6 +25,7 @@ def main():
                 elif name.isalpha() == False:
                     raise ValueError("Only Alphabets required.")
                 else:
+                    participant_dict["name"] = name
                     break
             except ValueError as e:
                 print("Oops!", e)
@@ -35,12 +34,12 @@ def main():
         while True:
             try:
                 age = int(input("Kindly enter your age: "))
-                if age <= 13:
-                    print("Sory! You're too young to participate.")
-                    if age < 0:
-                        
-                elif age >= 
+                if age < 0:
+                    print("Age cannot be negative.")          
+                elif (age <=13 or age >= 60):
+                    print("Sorry, You are not eligible to participate for this program!") 
                 else:
+                    participant_dict["age"] = age
                     break
             except ValueError:
                 print("Oops! That's not a valid age.\nYou can only provide positive numbers.")
@@ -49,11 +48,12 @@ def main():
         while True:
             try:
                 phone_no = input("Kindly input your phone number (Country code not accepted): ")
-                if len(phone_no) != 11:
-                    print("Your phone number must be exactly 11 digits. Try again.")
-                elif phone_no.isnumeric() == False:
+                if phone_no.startswith("+"):
                     print("Invalid entry. No country code please.")
+                elif len(phone_no) != 11:
+                    print("Your phone number must be exactly 11 digits. Try again.")
                 else:
+                    participant_dict["phone_no"] = phone_no
                     break
             except ValueError:
                 print("You can only input numbers")
@@ -67,14 +67,83 @@ def main():
                 if track.isalpha() == False:
                     raise ValueError("Must only be Alphabets")
                 else:
+                    participant_dict["track"] = track
                     break
             except ValueError as e:
                 print("Oops!", e)
-                        
+        print("\nRegistration Successful\n") 
+ 
+        #  Getting to exit the program
+        print("To exit the program, follow the instruction below:")
+        choice_exit = int(input("Kindly type 0 to exit the program  or 1 to continue: ")) 
+        if choice_exit == 0:
+            break 
+        else:
+            print("\n<--- Next Participant --->\n")
+            continue
 main()
+updating = participant_dict.update()
+print(participant_dict)   
+
+
+file_ops.save_participant(csv_file, participant_dict)
+
             
             
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             
