@@ -1,0 +1,2 @@
+#    TASK ONE : Write a Python program that prints the following information on separate lines:
+print("Full name: Abioye Olajide Abdullateef.\nUniversity: FUNAAB\nL.G.A: Ibadan South West.\nFavorite Nigerian Food: Amala with Efo Riro.")

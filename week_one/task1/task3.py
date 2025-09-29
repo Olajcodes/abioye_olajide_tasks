@@ -1,0 +1,2 @@
+#   TASK THREE: Print a simple timetable for a day in a Nigerian Secondary School using Tab Spacing and Newlines.
+print("Period:\tFirst Period\tSecond Period\tThird Period\tFourth Period\tFifth Period\n\nSubject:   Maths\t   Eng\t\t   Phy\t\t   Chm\t\t    Bio")
