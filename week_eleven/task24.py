@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
+from typing import Optional
 import uvicorn
 import os
 
@@ -24,12 +25,18 @@ class Item(BaseModel):
     track: str = Field(..., examples=["Data Analyst"])
     age: int = Field(..., examples=[20])
     
-# Creating 
+# Creating an optional class for updating details
+class update_item(BaseModel):
+    name: Optional[str] = None
+    track: Optional[str] = None
+    age: Optional[int] = None
     
 # Implementing the update(PATCH) function
-@app.patch("patch-data/{id}")
-def patch_data(id: int, req: Item):
-    data[id].update(req.model_dump())
+@app.patch("/patch-data/{id}")
+def patch_data(id: int, req: update_item):
+    if id >= len(data):
+        return {"Error": "Index out of range."}
+    data[id].update(req.model_dump(exclude_unset=True))
     print(data)
     return {"Message": "Data Edited", "Data": data}
 
@@ -37,6 +44,8 @@ def patch_data(id: int, req: Item):
 # Implementing the delete(REMOVE) function
 @app.delete("/delete-data/{id}")
 def delete_data(id: int):
+    if id >= len(data):
+        return {"Error": "Index Error"}
     data.pop(id)
     print(data)
     return {"Message": "Data Deleted", "Data": data}
